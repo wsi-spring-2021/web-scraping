@@ -8,9 +8,14 @@ var courses = [];
 
 console.log("There are", $('.coursetitle').length,"ITMD courses.");
 
-$('.coursetitle').each(function() {
+$('.courseblock').each(function() {
   var course = {};
-  course['title'] = $(this).text();
+  course['code'] = $(this).find('.coursecode').text();
+  course['title'] = $(this).find('.coursetitle').text();
+  course['title'] = $(this).find('.courseblockdesc')
+  .text()
+  .replace(/\n/gm, "")
+  .replace(/\s\s/gm, "");
   courses.push(course);
   // console.log($(this).text());
 });
@@ -18,4 +23,4 @@ $('.coursetitle').each(function() {
 console.log(courses);
 // $('.courseblockdesc').text().replace(/\n/gm, "");
 
-fs.writeFileSync('data/itmd.json',JSON.stringify(courses));
+// fs.writeFileSync('data/itmd.json',JSON.stringify(courses));
