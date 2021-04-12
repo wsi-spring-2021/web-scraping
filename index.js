@@ -27,6 +27,8 @@ $('.courseblock').each(function() {
   course['hours'] = JSON.parse(`{${hours}}`);
   if (course['hours'].hasOwnProperty('credit')) {
     course['hours']['credits'] = course['hours']['credit'];
+    course['hours']['lecture'] = 0;
+    course['hours']['lab'] = 0;
     delete course['hours']['credit'];
   };
   // console.log($(this).text());
