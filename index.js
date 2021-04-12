@@ -23,8 +23,12 @@ $('.courseblock').each(function() {
   .toLowerCase()
   .replace(/\n/gm, '')
   .replace(/(\d)(?!$)/gm, "$1,")
-  .replace(/([a-z]+)/gm, '"$1,"');
+  .replace(/([a-z]+)/gm, '"$1"');
   course['hours'] = JSON.parse(`{${hours}}`);
+  if (course['hours'].hasOwnProperty('credit')) {
+    course['hours']['credits'] = course['hours']['credit'];
+    delete course['hours']['credit'];
+  };
   // console.log($(this).text());
 });
 
