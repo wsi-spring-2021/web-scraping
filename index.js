@@ -16,7 +16,15 @@ $('.courseblock').each(function() {
   .text()
   .replace(/\n/gm, "")
   .replace(/\s\s/gm, "");
+  // JSON.parse(`{${uggo.toLowerCase().replace(/(\d)(?!$)/gm, "$1,").replace(/([a-z]+)/gm, '"$1"')}}`);
   courses.push(course);
+  hours = $(this).find('.hours')
+  .text()
+  .toLowerCase()
+  .replace(/\n/gm, '')
+  .replace(/(\d)(?!$)/gm, "$1,")
+  .replace(/([a-z]+)/gm, '"$1,"');
+  course['hours'] = JSON.parse(`{${hours}}`);
   // console.log($(this).text());
 });
 
